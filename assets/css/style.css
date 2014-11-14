@@ -382,7 +382,6 @@ a {
     margin-top: 0; }
   #content img {
     max-width: 100%;
-    max-height: 500px;
     margin: 50px auto;
     border: 10px solid white;
     box-shadow: 0 0 5px #dbdbdb;
