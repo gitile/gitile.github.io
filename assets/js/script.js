@@ -39,9 +39,9 @@ $(function(){
 	// get post link
 	cate1 = $('.newest');
 	cate2 = $('.java');
-	cate3 = $('.front');
-	cate4 = $('.dev');
-	cate5 = $('.open');
+	cate3 = $('.golang');
+	cate4 = $('.front');
+	cate5 = $('.tools');
 	cate6 = $('.note');
 
 	// switch

@@ -1,0 +1,78 @@
+---
+layout: default
+title: Java开发环境安装
+category: java
+keywords: Java开发环境安装、JDK、TOMCAT、MAVEN
+description: Java开发环境安装、JDK安装、TOMCAT安装、MAVEN安装。
+---
+
+<h3>安装环境</h3>
+<p>开发环境系统为<a href="http://www.ubuntu.com/download/desktop">Ubuntu 12.04 LTS</a>，需要的安装的工具有：jdk、tomcat、maven。</br>
+ 创建开发工具包安装目录(/usr/tools);
+<div class="highlight"><pre><code class="terminal"><span class="k">$</span> <span class="kd">cd</span> <span class="p">/usr</span>
+<span class="k">$</span> <span class="kd">mkdir</span> <span class="p">tools</span>
+</code></pre></div>
+</p>
+<h3>一、JDK安装</h3>
+<p>
+<div class="highlight"><pre><code class="terminal"><span class="k">$</span> <span class="kd">chmod a+x</span> <span class="p">jdk-6u37-linux-i586.bin</span>
+<span class="k">$</span> <span class="p">./jdk-6u37-linux-i586.bin</span>
+</code></pre></div>
+配置环境变量
+<div class="highlight"><pre><code class="terminal"><span class="k">$</span> <span class="kd">sudo vim</span> <span class="p">/etc/profile</span>
+</code></pre></div>
+在文档尾部添加如下内容
+<div class="highlight"><pre><code class="terminal"><span class="k">JAVA_HOME=</span><span class="p">/usr/tools/jdk1.6.0_37</span>
+<span class="k">JRE_HOME=</span><span class="p">$JAVA_HOME/jre</span>
+<span class="k">CLASSPATH=</span><span class="p">.:$JAVA_HOME/lib:$JRE_HOME/lib</span>
+<span class="k">PATH=</span><span class="p">$JAVA_HOME/bin:$JRE_HOME/bin:$PATH</span>
+<span class="k">export</span> <span class="p">JAVA_HOME JRE_HOME CLASSPATH PATH</span>
+</code></pre></div>
+修改系统默认参数
+<div class="highlight"><pre><code class="terminal"><span class="k">$</span> <span class="kd">sudo update-alternatives --install</span> <span class="p">/usr/bin/java java /usr/tools/jdk1.6.0_37/bin/java 300</span>
+<span class="k">$</span> <span class="kd">sudo update-alternatives --install</span> <span class="p">/usr/bin/javac javac /usr/tools/jdk1.6.0_37/bin/javac 300</span>
+<span class="k">$</span> <span class="kd">sudo update-alternatives --config</span> <span class="p">java</span>
+</code></pre></div>
+验证是否安装成功
+<div class="highlight"><pre><code class="terminal"><span class="k">$</span> <span class="kd">java -version</span>
+</code></pre></div>
+</p>
+<h3>二、tomcat安装配置</h3>
+<p>
+减压缩安装包并运行
+<div class="highlight"><pre><code class="terminal"><span class="k">$</span> <span class="kd">tar -zxvf</span> <span class="p">apache-tomcat-6.0.35.tar.gz</span>
+<span class="k">$</span> <span class="p">./bin/startup.sh</span>
+</code></pre></div>
+tomcat性能调整</br>
+<div class="highlight"><pre><code class="xml"><span class="p">#server.xml文件
+&lt;Executor name="tomcatThreadPool" namePrefix="catalina-exec-" maxThreads="200" minSpareThreads="50"/&gt;
+&lt;Connector executor="tomcatThreadPool" port="8080" connectionTimeout="5000"
+	protocol="org.apache.coyote.http11.Http11NioProtocol" enableLookups="false"
+	redirectPort="8443" maxThreads="200" acceptCount="500" acceptorThreadCount="1" URIEncoding="UTF-8"/&gt;
+</span> 
+</code></pre></div>
+<div class="highlight"><pre><code class="xml"><span class="p">#catalina.sh文件，tomcat堆内存设置,假设内存空间为4G
+JAVA_OPTS=-server -Xms1024m -Xmx1024m -Xmn256m -XX:PermSize=128m -XX:MaxNewSize=512m -XX:MaxPermSize=512m
+#让tomcat自己管理内存
+JAVA_OPTS=$JAVA_OPTS -Dcom.sun.management.jmxremote.port=1090 -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager -Djava.util.logging.config.file="$CATALINA_HOME\conf\logging.properties"
+</span> 
+</code></pre></div>
+</p>
+<h3>三、Maven安装配置</h3>
+<p>
+减压缩安装包
+<div class="highlight"><pre><code class="terminal"><span class="k">$</span> <span class="kd">tar -zxvf</span> <span class="p">apache-maven-3.0.4-bin.tar.gz</span>
+</code></pre></div>
+配置环境变量（在以上基础添加Maven环境变量）
+<div class="highlight"><pre><code class="terminal"><span class="k">M2_HOME=</span><span class="p">/usr/tools/apache-maven-3.0.4</span>
+<span class="k">JAVA_HOME=</span><span class="p">/usr/tools/jdk1.6.0_37</span>
+<span class="k">JRE_HOME=</span><span class="p">$JAVA_HOME/jre</span>
+<span class="k">CLASSPATH=</span><span class="p">.:$JAVA_HOME/lib:$JRE_HOME/lib</span>
+<span class="k">PATH=</span><span class="p">$JAVA_HOME/bin:$JRE_HOME/bin:$M2_HOME/bin:$PATH</span>
+<span class="k">export</span> <span class="p">JAVA_HOME JRE_HOME CLASSPATH M2_HOME PATH</span>
+</code></pre></div>
+验证是否安装成功
+<div class="highlight"><pre><code class="terminal"><span class="k">$</span> <span class="kd">source</span> <span class="p">/etc/profile</span>
+<span class="k">$</span> <span class="kd">mvn -version</span>
+</code></pre></div>
+</p>
