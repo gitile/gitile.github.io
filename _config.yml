@@ -1,0 +1,13 @@
+auto: true
+permalink: /:year/:month/:day/:title
+
+title : 涂灵峰
+keywords : 涂灵峰、JAVA、开源、github、xtotly@gmail.com、15868458379
+description : 涂灵峰的技术分享、学习笔记
+author :
+  name : 涂灵峰
+  email : xtotly@gmail.com
+  mobile : 15868458379
+
+production_url : http://www.gitile.com
+rss_path : /rss.xml

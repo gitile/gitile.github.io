@@ -1,0 +1,32 @@
+# Windows file caches
+Thumbs.db
+*.bak
+
+# Folder config file
+Desktop.ini
+
+# JetBrains IDE project config file
+.idea/
+
+# SVN
+.svn/
+
+# Tmp File
+tmp/
+*.swp
+
+# Jekyll
+_site/
+_site/*
+_theme_packages/*
+
+# OSX
+.DS_Store
+
+!.gitkeep
+
+.rbenv-version
+.rvmrc
+
+
+

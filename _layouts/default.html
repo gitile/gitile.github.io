@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"/>
+    <meta name="baidu-site-verification" content="8QnHjSL385" />
+    <meta name="google-site-verification" content="T_Zl1iqMPfeGlJegHQRrQKzrEOJWgn1nEgw1Emn3Fck" />
+    <meta name="360-site-verification" content="fb62256e74216e9966b5f458de5fe2ec" />
+    <!--[if lte IE 9]><meta http-equiv="refresh" content="0;url=/assets/ie.html"><![endif]-->
+    <title>{{ page.title }}</title>
+	{% if page.keywords %}
+	<meta name="keywords" content="{{ page.keywords }}">
+	{% else %}
+	<meta name="keywords" content="{{ site.keywords }}">
+	{% endif %}
+	{% if page.description %}
+	<meta name="description" content="{{ page.description }}">
+	{% else %}
+	<meta name="description" content="{{ site.description }}">
+	{% endif %}
+    <link rel="alternate" type="application/rss+xml" title="文章订阅" href="{{ site.rss_path }}" />
+    <link rel="shortcut icon" href="/assets/images/favicon.ico" />
+	<link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+</head>
+<body>
+	<nav id="nav">
+		<img id="profile" src="/assets/images/profile.jpg" alt="">
+		<ul id="menu">
+			<li id="label1" class="label selected"><span>最新文章</span></li>
+			<li id="label2" class="label"><sapn>Java</sapn></li>
+			<li id="label3" class="label"><span>Golang</span></li>
+			<li id="label4" class="label"><span>开发工具</span></li>
+			<li id="label5" class="label"><span>技术文章</span></li>
+			<li id="label6" class="label"><span>学习笔记</span></li>
+			<a id="about" href="/index.html">关于我</a>
+		</ul>
+		<a id="contact_me" href="mailto:xtotly@gmail.com?Subject=Hi Niuplus"></a>
+		<a id="rss" href="{{ site.rss_path }}" target="blank"></a>
+	</nav>
+	<aside id="sidebar">
+		<div id="title_wrap" class="select1">
+			<h2 id="title1" class="title" >最新文章</h2>
+			<h2 id="title2" class="title" >Java</h2>
+			<h2 id="title3" class="title" >Golang</h2>
+			<h2 id="title4" class="title" >开发工具</h2>
+			<h2 id="title5" class="title" >技术文章</h2>
+			<h2 id="title6" class="title" >学习笔记</h2>
+		</div>
+		<div id="post_list">
+		{% for post in site.posts %}
+			<a class="{{ post.category }} newest" href="{{ site.production_url }}{{ post.url }}"><span class="circle_icon"></span>{{ post.title }}<span class="date">{{ post.date | date_to_string }}</span></a>
+		{% endfor %}
+		</div>
+	</aside>
+	
+	<div id="container">
+		<div id="pjax">
+			<article id="post">
+				<header id="header">
+					<h1 id="identifier">{{ page.title }}</h1>
+					<button id="fullscreen" class="header_icon"></button>
+					<button id="fontsize" class="header_icon"></button>
+				</header>
+				<div id="content">
+					{{ content }}
+				</div>
+			</article>
+			<div id="disqus_thread"></div>
+			<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+			<a href="http://disqus.com" class="dsq-brlink" target="_blank">Loading Disqus comments...</a>
+		</div>
+	</div>
+	<div id="notice">左右滑动</div>
+	<script type="text/javascript" src="/assets/js/jquery.js"></script>
+	<script type="text/javascript" src="/assets/js/jquery.pjax.js"></script>
+	<script type="text/javascript" src="/assets/js/script.js"></script>
+	<script type="text/javascript">
+	var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+	document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F590f80e6b59a342c6e282d8b98d9b223' type='text/javascript'%3E%3C/script%3E"));
+	</script>
+</body>
+</html>
