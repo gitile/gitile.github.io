@@ -39,10 +39,9 @@ $(function(){
 	// get post link
 	cate1 = $('.newest');
 	cate2 = $('.java');
-	cate3 = $('.golang');
-	cate4 = $('.front');
-	cate5 = $('.tools');
-	cate6 = $('.note');
+	cate3 = $('.spring');
+	cate4 = $('.elk');
+	cate5 = $('.other');
 
 	// switch
 	var clickHandler = function(k) {
