@@ -12,9 +12,9 @@ description: 记录U盘安装Centos8过程及遇到的问题。
 	<span class="k">dracut:/#</span> <span class="kd">cd </span> <span class="p">/dev</span>
 	<span class="k">dracut:/#</span> <span class="kd">ls</span> <span class="p"># 找到此时U盘对应的名字；如sdb4</span>
 	<span class="k">dracut:/#</span> <span class="kd">reboot</span> <span class="p"># 重启计算机</span>
-	<span class="k"></span> <span class="p">在install页面按e或者tab键（根据页面提示）</span> 
-
+	<span class="k"></span>
 </code></pre></div>
+在install页面按e或者tab键（根据页面提示）</br>
 修改vmlinuz initrd=initrd.img inst.stage2=hd:LABEL=CentOS\x207\x20x86_64 quiet 修改为 vmlinuz initrd=initrd.img inst.stage2=hd:/dev/sdb4(你u盘所在)</br>
 再按Enter,再 ctrl+x 即可
 </p>
@@ -24,17 +24,20 @@ description: 记录U盘安装Centos8过程及遇到的问题。
 <div class="highlight"><pre><code class="terminal">
 	<span class="k">$</span> <span class="kd">hostnamectl</span>
 	<span class="k">$</span> <span class="kd">hostnamectl set-hostname </span> <span class="p">host.example.com</span>
+	<span class="k"></span>
 </code></pre></div>
 设置或者修改时区</br>
 <div class="highlight"><pre><code class="terminal">
 	<span class="k">$</span> <span class="kd">timedatectl </span> <span class="p">#查看当前时区信息</span>
 	<span class="k">$</span> <span class="kd">timedatectl list-timezones</span> <span class="p">#想要列出所有可用的时区</span>
 	<span class="k">$</span> <span class="kd">timedatectl set-timezone</span> <span class="p">your_time_zone</span>
+	<span class="k"></span>
 </code></pre></div>
 mini版本常用工具安装</br>
 <div class="highlight"><pre><code class="terminal">
 	<span class="k">$</span> <span class="kd">yum </span><span class="p">update</span>
 	<span class="k">$</span> <span class="kd">yum install</span> <span class="p">net-tools vim tar lsof</span>
+	<span class="k"></span>
 </code></pre></div>
 mini版本iptables安装更新</br>
 <div class="highlight"><pre><code class="terminal">
@@ -46,5 +49,6 @@ mini版本iptables安装更新</br>
 	<span class="k">$</span> <span class="kd">systemctl start iptables </span> <span class="p">#最后打开iptables</span>
 	<span class="k">$</span> <span class="kd">service iptables save</span> <span class="p"># 将配置信息保存在/etc/sysconfig/iptables里</span>
 	<span class="k">$</span> <span class="kd">iptables -I INPUT -p tcp --dport 6443 -j ACCEPT </span> <span class="p"># linux iptables开放端口命令</span>
+	<span class="k"></span>
 </code></pre></div>
 </p>
