@@ -38,7 +38,7 @@ $(function(){
 
 	// get post link
 	cate1 = $('.newest');
-	cate2 = $('.java');
+	cate2 = $('.devops');
 	cate3 = $('.spring');
 	cate4 = $('.elk');
 	cate5 = $('.other');
