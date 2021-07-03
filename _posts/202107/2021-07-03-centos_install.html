@@ -13,10 +13,10 @@ description: 记录U盘安装Centos8过程及遇到的问题。
 	<span class="k">dracut:/#</span> <span class="kd">ls</span> <span class="p"># 找到此时U盘对应的名字；如sdb4</span>
 	<span class="k">dracut:/#</span> <span class="kd">reboot</span> <span class="p"># 重启计算机</span>
 	<span class="k"></span> <span class="p">在install页面按e或者tab键（根据页面提示）</span> 
-	<span class="k"></span> <span class="p">修改vmlinuz initrd=initrd.img inst.stage2=hd:LABEL=CentOS\x207\x20x86_64 quiet</span>
-	<span class="k"></span> <span class="p">修改为 vmlinuz initrd=initrd.img inst.stage2=hd:/dev/sdb4(你u盘所在)</span>
-	<span class="k"></span> <span class="p">再按Enter,再 ctrl+x 即可</span>
+
 </code></pre></div>
+修改vmlinuz initrd=initrd.img inst.stage2=hd:LABEL=CentOS\x207\x20x86_64 quiet 修改为 vmlinuz initrd=initrd.img inst.stage2=hd:/dev/sdb4(你u盘所在)</br>
+再按Enter,再 ctrl+x 即可
 </p>
 <h3>二、Centos8常用命令备注</h3>
 <p>
@@ -39,7 +39,7 @@ mini版本常用工具安装</br>
 mini版本iptables安装更新</br>
 <div class="highlight"><pre><code class="terminal">
 	<span class="k">$</span> <span class="kd">cd </span><span class="p">/etc/sysconfig</span>
-	span class="k">$</span> <span class="kd">systemctl stop firewalld </span> <span class="p">#不管防火墙有没有关 都关闭防火墙</span>
+	<span class="k">$</span> <span class="kd">systemctl stop firewalld </span> <span class="p">#不管防火墙有没有关 都关闭防火墙</span>
 	<span class="k">$</span> <span class="kd">systemctl disable firewalld.service </span> <span class="p">#禁止firewall开机启动</span>
 	<span class="k">$</span> <span class="kd">yum install iptables-services </span> <span class="p">#然后安装或更新服务</span>
 	<span class="k">$</span> <span class="kd">systemctl enable iptables </span> <span class="p">#再启动iptables服务</span>
